@@ -8,7 +8,7 @@ Also, as with anything crypto, make sure you do your due dilligence and only ris
 
 ## Chart
 
-The [`chart`](./chart) directory contains the Helm 3 chart for deploying a freqtrade bot and/or running backtests. Support for running hyperopt is planned for later. This chart isn't published anywhere yet, but it will eventually be published on GitHub Pages.
+The [`charts`](charts) directory contains the Helm 3 chart for deploying a freqtrade bot and/or running backtests. Support for running hyperopt is planned for later. This chart isn't published anywhere yet, but it will eventually be published on GitHub Pages.
 
 ## Testing locally
 
