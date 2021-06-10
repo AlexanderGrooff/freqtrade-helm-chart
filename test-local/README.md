@@ -3,7 +3,7 @@
 ## Notes
 
 - The defaults under the `./values/` directory will be very trivial. **DO NOT USE THEM FOR LIVE TRADING**.
-- If the chart options aren't documented yet, you can look at the [default values](../chart/values.yaml) on the chart, and most of them should be self-explanatory if you're already familiar with freqtrade.
+- If the chart options aren't documented yet, you can look at the [default values](../charts/freqtrade/values.yaml) on the chart, and most of them should be self-explanatory if you're already familiar with freqtrade.
 
 ## Prerequisites
 
