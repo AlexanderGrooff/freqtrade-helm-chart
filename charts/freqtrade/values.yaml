@@ -87,11 +87,25 @@ backtesting:
     enable_export: true
     reader_enabled: true
     pvc_size: 1Gi
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256M
+    limits:
+      cpu: 100m
+      memory: 256M
 
 bot:
   enabled: false
   strategy_name: SampleStrategy
   pvc_size: 1Gi
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256M
+    limits:
+      cpu: 100m
+      memory: 256M
 
 ingress:
   enabled: true

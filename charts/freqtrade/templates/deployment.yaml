@@ -35,6 +35,9 @@ spec:
         ports:
         - name: api
           containerPort: 8080
+        {{- if .Values.bot.resources }}
+        resources: {{ toYaml .Values.bot.resources | nindent 12 }}
+        {{- end }}
       volumes:
       - name: config
         configMap:
