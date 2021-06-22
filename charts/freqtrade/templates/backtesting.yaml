@@ -29,6 +29,9 @@ spec:
           name: data
         - mountPath: /freqtrade/config
           name: config
+        {{- if .Values.backtesting.resources }}
+        resources: {{ toYaml .Values.backtesting.resources | nindent 12 }}
+        {{- end }}
       {{- end }}
       containers:
       - name: backtesting
