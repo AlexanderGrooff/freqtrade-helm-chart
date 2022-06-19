@@ -37,8 +37,7 @@ config:
     ccxt_async_config:
       enableRateLimit: true
       rateLimit: 3100
-    pair_whitelist:
-    - .*/BTC
+    pair_whitelist: []
     pair_blacklist: []
   pairlists:
   - method: StaticPairList
