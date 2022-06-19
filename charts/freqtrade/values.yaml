@@ -8,8 +8,6 @@ config:
   dry_run: true
   cancel_open_orders_on_exit: false
   unfilledtimeout:
-    buy: 10
-    sell: 30
   bid_strategy:
     price_side: bid
     ask_last_balance: 0
