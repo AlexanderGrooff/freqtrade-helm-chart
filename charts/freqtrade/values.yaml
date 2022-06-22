@@ -103,6 +103,8 @@ bot:
     limits:
       cpu: 100m
       memory: 256M
+  volumeMounts: []
+  volumes: []
 
 ingress:
   enabled: true

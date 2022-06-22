@@ -32,6 +32,12 @@ spec:
           name: strategies
         - mountPath: /sqlite
           name: sqlite
+        {{- if .Values.bot.volumeMounts }}
+        {{- range $_, $vol := .Values.bot.volumeMounts }}
+        - name: {{ $vol.name }}
+          mountPath: {{ $vol.mountPath }}
+        {{- end }}
+        {{- end }}
         ports:
         - name: api
           containerPort: 8080
@@ -48,6 +54,14 @@ spec:
       - name: sqlite
         persistentVolumeClaim:
           claimName: freqtrade-sqlite
+      {{- if .Values.bot.volumes }}
+      {{- range $_, $vol := .Values.bot.volumes }}
+      - name: {{ $vol.name }}
+        hostPath:
+          path: {{ $vol.hostPath.path }}
+          type: {{ $vol.hostPath.type }}
+      {{- end }}
+      {{- end }}
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
