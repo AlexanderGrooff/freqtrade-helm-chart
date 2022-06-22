@@ -28,8 +28,6 @@ spec:
         volumeMounts:
         - mountPath: /freqtrade/config
           name: config
-        - mountPath: /freqtrade/user_data/strategies
-          name: strategies
         - mountPath: /sqlite
           name: sqlite
         {{- if .Values.bot.volumeMounts }}
@@ -37,6 +35,9 @@ spec:
         - name: {{ $vol.name }}
           mountPath: {{ $vol.mountPath }}
         {{- end }}
+        {{- else }}
+        - mountPath: /freqtrade/user_data/strategies
+          name: strategies
         {{- end }}
         ports:
         - name: api
@@ -48,9 +49,6 @@ spec:
       - name: config
         configMap:
           name: freqtrade-config
-      - name: strategies
-        configMap:
-          name: freqtrade-strategies
       - name: sqlite
         persistentVolumeClaim:
           claimName: freqtrade-sqlite
@@ -60,6 +58,10 @@ spec:
         hostPath:
           path: {{ $vol.hostPath.path }}
           type: {{ $vol.hostPath.type }}
+      {{- else }}
+      - name: strategies
+        configMap:
+          name: freqtrade-strategies
       {{- end }}
       {{- end }}
 ---
