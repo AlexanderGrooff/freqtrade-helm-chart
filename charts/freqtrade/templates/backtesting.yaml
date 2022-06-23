@@ -67,8 +67,15 @@ spec:
           name: results
         - mountPath: /freqtrade/config
           name: config
+        {{- if .Values.bot.volumeMounts }}
+        {{- range $_, $vol := .Values.bot.volumeMounts }}
+        - name: {{ $vol.name }}
+          mountPath: {{ $vol.mountPath }}
+        {{- end }}
+        {{- else }}
         - mountPath: /freqtrade/user_data/strategies
           name: strategies
+        {{- end }}
       restartPolicy: Never
       volumes:
       - name: data
@@ -80,9 +87,18 @@ spec:
       - name: config
         configMap:
           name: freqtrade-config
+      {{- if .Values.bot.volumes }}
+      {{- range $_, $vol := .Values.bot.volumes }}
+      - name: {{ $vol.name }}
+        hostPath:
+          path: {{ $vol.hostPath.path }}
+          type: {{ $vol.hostPath.type }}
+      {{- else }}
       - name: strategies
         configMap:
           name: freqtrade-strategies
+      {{- end }}
+      {{- end }}
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
