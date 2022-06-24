@@ -1,24 +1,45 @@
 {{- if .Values.ingress.enabled }}
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: {{ .Values.ingress.apiVersion }}
 kind: Ingress
 metadata:
   name: freqtrade
+  {{- if .Values.ingress.annotations }}
+  annotations:
+    {{- range $key, $value := .Values.ingress.annotations }}
+    {{ $key }}: {{ $value | quote }}
+    {{- end }}
+  {{- end }}
 spec:
+  {{- if .Values.ingress.className }}
+  ingressClassName: {{ .Values.ingress.className }}
+  {{- end }}
+  {{- if .Values.ingress.tls.enabled }}
+  tls:
+  - hosts:
+    - {{ .Values.ingress.host | quote }}
+    secretName: {{ .Values.ingress.tls.secretName }}
+  {{- end }}
   rules:
-  - host: localhost
+  - host: {{ .Values.ingress.host | quote }}
     http:
       paths:
       {{- if (and .Values.bot.enabled .Values.config.api_server.enabled) }}
       - path: /
+        pathType: Prefix
         backend:
-          serviceName: freqtrade
-          servicePort: 8080
+          service:
+            name: freqtrade
+            port:
+              number: 8080
       {{- end }}
-      {{- if (and .Values.backtesting.results.enable_export .Values.backtesting.results.reader_enabled) }}
+      {{- if (and .Values.backtesting.enabled .Values.backtesting.results.enable_export .Values.backtesting.results.reader_enabled) }}
       - path: /results
+        pathType: Prefix
         backend:
-          serviceName: results-reader
-          servicePort: 80
+          service:
+            name: results-reader
+            port:
+              number: 80
       {{- end }}
 ---
 {{- end }}
