@@ -2,6 +2,14 @@ apiVersion: v1
 entries:
   freqtrade:
   - apiVersion: v2
+    created: "2022-06-24T14:14:54.161769254Z"
+    description: Freqtrade
+    digest: df05e9c45821d1cad7f00ec8772b1bacb239be795eb990c7bf249e94ff0e51de
+    name: freqtrade
+    urls:
+    - https://AlexanderGrooff.github.io/freqtrade-helm-chart/freqtrade-0.3.0.tgz
+    version: 0.3.0
+  - apiVersion: v2
     created: "2022-06-23T07:25:11.222763234Z"
     description: Freqtrade
     digest: 8e8e0457d5e69ec82a8e5accf9b6acfd652a2a37a232326206c0fb3067691c57
@@ -65,4 +73,4 @@ entries:
     urls:
     - https://AlexanderGrooff.github.io/freqtrade-helm-chart/freqtrade-0.0.0.tgz
     version: 0.0.0
-generated: "2022-06-23T07:25:11.221739116Z"
+generated: "2022-06-24T14:14:54.158988556Z"
