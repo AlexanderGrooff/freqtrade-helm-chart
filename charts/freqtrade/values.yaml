@@ -8,22 +8,6 @@ config:
   dry_run: true
   cancel_open_orders_on_exit: false
   unfilledtimeout:
-  bid_strategy:
-    price_side: bid
-    ask_last_balance: 0
-    use_order_book: false
-    order_book_top: 1
-    check_depth_of_market:
-      enabled: false
-      bids_to_ask_delta: 1
-  ask_strategy:
-    price_side: ask
-    use_order_book: false
-    order_book_min: 1
-    order_book_max: 1
-    use_exit_signal: true
-    exit_profit_only: false
-    ignore_roi_if_entry_signal: false
   download_trades: false
   exchange:
     name: kraken
@@ -41,17 +25,6 @@ config:
   - method: StaticPairList
   edge:
     enabled: false
-    process_throttle_secs: 3600
-    calculate_since_number_of_days: 7
-    allowed_risk: 0.01
-    stoploss_range_min: -0.01
-    stoploss_range_max: -0.1
-    stoploss_range_step: -0.01
-    minimum_winrate: 0.6
-    minimum_expectancy: 0.2
-    min_trade_number: 10
-    max_trade_duration_minute: 1440
-    remove_pumps: false
   telegram:
     enabled: false
     token: ''
