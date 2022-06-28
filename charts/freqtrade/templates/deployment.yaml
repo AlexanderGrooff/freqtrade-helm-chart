@@ -25,6 +25,12 @@ spec:
         - {{ .Values.bot.strategy_name }}
         - --db-url
         - sqlite:////sqlite/tradesv3.sqlite
+        {{- if eq .Values.bot.verbosity "debug" }}
+        - -v
+        {{- end }}
+        {{- if eq .Values.bot.verbosity "trace" }}
+        - -vvv
+        {{- end }}
         volumeMounts:
         - mountPath: /freqtrade/config
           name: config
