@@ -70,6 +70,7 @@ config:
 image:
   image: freqtradeorg/freqtrade
   tag: latest
+  imagePullPolicy: "Always"
 
 backtesting:
   enabled: false

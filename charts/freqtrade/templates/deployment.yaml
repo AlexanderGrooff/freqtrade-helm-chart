@@ -15,6 +15,7 @@ spec:
       containers:
       - name: freqtrade
         image: {{ .Values.image.image }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.imagePullPolicy }}
         command:
         - freqtrade
         args:
